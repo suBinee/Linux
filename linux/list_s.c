@@ -3,8 +3,14 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <pwd.h>
+#include <grp.h>
+#include<time.h>
 
-int main(int argc, char **argv[])
+void printSize(char*, char*, struct stat*);
+
+
+int main(int argc, char **argv)
 {
     DIR *dp;
     char *dir;
@@ -16,10 +22,9 @@ int main(int argc, char **argv[])
         dir=".";
     else dir=argv[1];
 
-    if((dp=opendir(dir))==NULL){
+    if((dp=opendir(dir))==NULL)
         perror(dir);
-        exit(1);
-    }
+    
 
     while((d=readdir(dp))!=NULL){
         sprintf(path,"%s/%s ",dir, d->d_name);
@@ -27,9 +32,15 @@ int main(int argc, char **argv[])
         if(lstat(path, &st)<0)
             perror(path);
         else
-            printf("%d %s \n",st.st_size, d->d_name);
+            printSize(path, d->d_name, &st);
     }
 
     closedir(dp);
     exit(0);
 }
+
+void printSize(char *pathname, char *file, struct stat *st)
+{
+    printf("%9d", st->st_size);
+}
+

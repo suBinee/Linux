@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
             lseek(fd, (id-START_ID)*sizeof(rec), SEEK_SET);
             if((read(fd, &rec, sizeof(rec))>0) && (rec.id!=0))
                 printf("학번 : %d\t 이름:%s\t 점수:%d\n", rec.id, rec.name, rec.score);
-            else printf("레토드 %d 없음\n", id);
+            else printf("레코드 %d 없음\n", id);
         }
         else printf("입력오류");
         

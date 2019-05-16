@@ -7,8 +7,8 @@
 #include <time.h>
 #include <stdlib.h>
 
-char type(mode_t);
-char *perm(mode_t);
+//char type(mode_t);
+//char *perm(mode_t);
 void printStat(char*, char*, struct stat*);
 
 int main(int argc, char **argv)
@@ -49,7 +49,7 @@ void printStat(char *pathname, char *file, struct stat *st)
 //    printf("%.12s", ctime(&st->st_mtime)+4);
     printf("%s\n",file);
 }
-
+/*
 char type(mode_t mode)
 {
     if(S_ISREG(mode))
@@ -86,4 +86,4 @@ char* perm(mode_t mode)
             perms[i*3+2]='x';
     }
     return(perms);
-}
+}*/
