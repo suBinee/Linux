@@ -12,7 +12,7 @@ int main(int argc, char **argv){
         exit(1);
     }
 
-    fd=open(argv[1],O_WRONLY);
+    fd=open(argv[1],O_RDWR);
     if(fd=-1){
         printf("파일열기실패\n");
         exit(1);
